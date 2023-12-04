@@ -34,5 +34,5 @@ fn main() {
 
 fn calc_score(left: &[i32], right: &[i32]) -> i32 {
     let mut amount: i32;
-    right.into_iter().for_each(|elem|left.)
+    // right.into_iter().for_each(|elem|left.)
 }
