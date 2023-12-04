@@ -17,6 +17,4 @@ fn main() {
         .map(|clean| clean.parse::<i32>().unwrap())
         .sum();
     dbg!(cleaned);
-    // let cleaned: Vec<String> = split.into_iter().map(|line|"".into()).collect();
-    println!("Hello, world!");
 }
