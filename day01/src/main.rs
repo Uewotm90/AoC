@@ -7,11 +7,10 @@ fn main() {
     let cleaned: i32 = split
         .into_iter()
         .map(|line| {
-            let chars: Vec<char> =line.chars()
-                .filter(|x| x.is_ascii_digit()).collect();
-                // dbg!(&chars);
-                format!("{}{}",chars.first().unwrap(),chars.last().unwrap())
-                // .fold("".into(), |acc, x| format!("{acc}{x}"))
+            let chars: Vec<char> = line.chars().filter(|x| x.is_ascii_digit()).collect();
+            // dbg!(&chars);
+            format!("{}{}", chars.first().unwrap(), chars.last().unwrap())
+            // .fold("".into(), |acc, x| format!("{acc}{x}"))
         })
         // .inspect(|item| {dbg!(item);})
         .map(|clean| clean.parse::<i32>().unwrap())
