@@ -49,7 +49,9 @@ fn main() {
             // pair.1.sort();
             calc_score(pair.0.as_slice(), pair.1.as_slice())
         })
-        .inspect(|elem| {dbg!(elem);})
+        .inspect(|elem| {
+            dbg!(elem);
+        })
         .sum();
     dbg!(res);
 }
@@ -58,13 +60,12 @@ fn calc_score(left: &[i32], right: &[i32]) -> i32 {
     let mut amount: u32 = 0;
     right
         .into_iter()
-        .for_each(|elem| match left.iter().position(|l_elem|l_elem == elem) {
+        .for_each(|elem| match left.iter().position(|l_elem| l_elem == elem) {
             Some(_) => amount = amount + 1,
             None => (),
         });
-        match amount {
-            0 => 0,
-            _ => 2_i32.pow(amount - 1)
-        }
-    
+    match amount {
+        0 => 0,
+        _ => 2_i32.pow(amount - 1),
+    }
 }
