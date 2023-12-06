@@ -48,15 +48,6 @@ fn main() {
         .map(|pair| calc_score(pair.0.as_slice(), pair.1.as_slice()))
         // .inspect(|elem| {dbg!(elem);})
         .fold(0, |acc,x|acc+x);
-        .into_iter()
-        .map(|pair| {
-            // pair.1.sort();
-            calc_score(pair.0.as_slice(), pair.1.as_slice())
-        })
-        .inspect(|elem| {
-            dbg!(elem);
-        })
-        .sum();
     dbg!(res);
 }
 
