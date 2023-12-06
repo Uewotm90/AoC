@@ -2,7 +2,8 @@ use std::fs::read_to_string;
 // use std::env;
 
 fn main() {
-    let input = read_to_string(r"src/input.txt")
+    // dbg!(env::current_dir().unwrap());
+    let input = read_to_string(r"C:\Users\ander\Documents\GitHub\AoC\AoC\day04\src\input.txt")
         .unwrap()
         .split("\n")
         .map(|str| str.into())
@@ -47,6 +48,15 @@ fn main() {
         .map(|pair| calc_score(pair.0.as_slice(), pair.1.as_slice()))
         // .inspect(|elem| {dbg!(elem);})
         .fold(0, |acc,x|acc+x);
+        .into_iter()
+        .map(|pair| {
+            // pair.1.sort();
+            calc_score(pair.0.as_slice(), pair.1.as_slice())
+        })
+        .inspect(|elem| {
+            dbg!(elem);
+        })
+        .sum();
     dbg!(res);
 }
 
@@ -54,13 +64,12 @@ fn calc_score(left: &[i32], right: &[i32]) -> i32 {
     let mut amount: u32 = 0;
     right
         .into_iter()
-        .for_each(|elem| match left.binary_search(elem) {
-            Ok(_) => amount = amount + 1,
-            Err(_) => (),
+        .for_each(|elem| match left.iter().position(|l_elem| l_elem == elem) {
+            Some(_) => amount = amount + 1,
+            None => (),
         });
-        match amount {
-            0 => 0,
-            _ => 2_i32.pow(amount - 1)
-        }
-    
+    match amount {
+        0 => 0,
+        _ => 2_i32.pow(amount - 1),
+    }
 }
