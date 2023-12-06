@@ -46,7 +46,7 @@ fn main() {
         .iter()
         .map(|pair| calc_score(pair.0.as_slice(), pair.1.as_slice()))
         // .inspect(|elem| {dbg!(elem);})
-        .sum();
+        .fold(0, |acc,x|acc+x);
     dbg!(res);
 }
 
